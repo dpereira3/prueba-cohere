@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Chat con Cohere</h2>
+<div id="chat-container">
+  {% for message in messages %}
+    <p>{{ message }}</p>
+  {% endfor %}
+</div>
+<form method="post" action="/send_message">
+  <input type="text" name="message">
+  <button type="submit">Enviar</button>
+</form>
+{% endblock %}
