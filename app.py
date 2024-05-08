@@ -3,6 +3,7 @@ import requests
 from flask import render_template
 from flask import g
 from flask import request
+import os
 
 app = Flask(__name__)
 
@@ -34,7 +35,7 @@ def chat():
         g.messages.append(f'Cohere: {response_from_cohere}')
     return render_template('chat.html', messages=g.messages)
 
-COHERE_API_KEY = 'zCuY6C9JU0eL7K19BXvWi1cF2FQUvHiOMQwxmaqd'
+COHERE_API_KEY = os.getenv('COHERE_API_KEY')
 COHERE_API_URL = 'https://api.cohere.com/command-api/v1'
 
 def get_cohere_response(message):
